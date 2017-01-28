@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/user/smit2395/.ssh'
+let g:netrw_dirhist_2='/user/smit2395/Documents/cse232/projects/project03'
+let g:netrw_dirhist_3='/user/smit2395/Documents/cse232/projects/project04'
