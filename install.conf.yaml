@@ -4,3 +4,7 @@
     ~/.vim: vim
     ~/.zshrc: zshrc
     ~/.oh-my-zsh: oh-my-zsh
+
+- shell:
+    - [git submodule init update --recursive, Installing Submodules]
+    - [vim +PluginInstall +qall, Installing vim Plugins]
