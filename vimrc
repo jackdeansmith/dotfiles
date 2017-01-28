@@ -1,46 +1,43 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible              " Required for Vundle
+filetype off                  " Required for Vundle
 
+"----------VUNDLE STUFF-----------
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+"My pulgins
 Plugin 'tpope/vim-surround'
 Plugin 'raimondi/delimitmate'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
-
 Plugin 'good5dog5/arm.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" Put your non-Plugin stuff after this line
 
 "this is needed for airline to work properly
 set laststatus=2
+"---------END VUNDLE STUFF----------
 
-"for unicode support
-set encoding=utf-8
+"Keybindings
+let mapleader = " "
 
-"from msu cse320
-"Use 80 as the width of one line and wrap long lines
-set textwidth=80
-set wrap
-highlight ColorColumn ctermbg=DarkGray
-set colorcolumn=81
+"Encoding
+set enc=utf-8
+set fenc=utf-8
+set termencoding=utf-8
 
-" Enable syntax highlighting
-syntax on
-set number 
+"Wildmode, just seeing if I'll actually use it, borrowed from another .vimrc
+set wildmenu " turn on wild menu
+set wildmode=list:longest " turn on wild menu in special format (long format)
+set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*.jpg,*.gif,*.png " ignore formats"
 
-" Enable C/C++ indenting
+"Indentation
 set cindent
-
-" Expand tabs into 2 spaces (except for makefiles)
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -48,6 +45,11 @@ set expandtab
 autocmd FileType  make      setlocal noexpandtab
 autocmd FileType  makefile  setlocal noexpandtab
 
-" set the leader to the space bar
+"UI
+set textwidth=80
+set wrap
+highlight ColorColumn ctermbg=DarkGray
+set colorcolumn=81
 set showcmd
-let mapleader = ","
+syntax on
+set number 
