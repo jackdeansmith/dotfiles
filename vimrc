@@ -15,6 +15,7 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'good5dog5/arm.vim'
 Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
