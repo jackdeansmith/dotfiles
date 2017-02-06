@@ -89,10 +89,5 @@ source $ZSH/oh-my-zsh.sh
 alias n='clear && ls'
 alias cle='clear'
 
-#aliases for common ssh connections
-alias black='ssh smit2395@black.cse.msu.edu'
-alias 410='ssh smit2395@cse410.cse.msu.edu'
-alias arctic='ssh smit2395@arctic.msu.edu'
-
 #Source ~/.zsh.local if it exists
 [ -f ~/.zsh.local ] && source ~/.zsh.local
