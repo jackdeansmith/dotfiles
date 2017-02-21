@@ -16,6 +16,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'good5dog5/arm.vim'
 Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -24,6 +25,7 @@ filetype plugin indent on    " required
 "this is needed for airline to work properly
 set laststatus=2
 "---------END VUNDLE STUFF----------
+"
 
 "Keybindings
 let mapleader = " "
