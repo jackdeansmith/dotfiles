@@ -85,6 +85,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#Use vi mode for line editing
+set -o vi
+
 #useful shortcut aliases
 alias n='clear && ls'
 alias cle='clear'
