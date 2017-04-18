@@ -1,5 +1,7 @@
 [user]
 	name = Jack Smith
-	email = jackdeansmith@gmail.com
+	email = smit2395@git.cse.msu.edu
 [push]
 	default = simple
+[core]
+	excludesfile = /Users/jacksmith/.gitignore_global

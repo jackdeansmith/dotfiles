@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/user/smit2395/.ssh'
 let g:netrw_dirhist_2='/user/smit2395/Documents/cse232/projects/project03'
 let g:netrw_dirhist_3='/user/smit2395/Documents/cse232/projects/project04'
 let g:netrw_dirhist_4='/Users/jacksmith/Desktop/learn_gdb/testit.dSYM'
 let g:netrw_dirhist_5='/Users/jacksmith/Desktop/learn_gdb/testit.dSYM/Contents'
 let g:netrw_dirhist_6='/Users/jacksmith/Desktop/learn_gdb/testit.dSYM/Contents/Resources'
+let g:netrw_dirhist_7='/Users/jacksmith/Documents/School/2016-2017/CSE422/net-p2/.git'
+let g:netrw_dirhist_8='/Users/jacksmith/.ssh'
