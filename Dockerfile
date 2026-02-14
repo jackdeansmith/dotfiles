@@ -32,7 +32,7 @@ USER dev
 WORKDIR /home/dev
 
 # Clone dotfiles and install
-RUN git clone https://github.com/CHANGEME/dotfiles.git /home/dev/src/dotfiles \
+RUN git clone https://github.com/jackdeansmith/dotfiles.git /home/dev/src/dotfiles \
     && /home/dev/src/dotfiles/install.sh
 
 CMD ["zsh"]
