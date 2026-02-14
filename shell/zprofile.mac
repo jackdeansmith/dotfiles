@@ -1,0 +1,17 @@
+#
+# macOS-specific login environment
+#
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# chruby
+if [[ -s /opt/homebrew/opt/chruby/share/chruby/chruby.sh ]]; then
+  source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+fi
+
+# Docker Desktop CLI tools
+path=($path /Applications/Docker.app/Contents/Resources/bin)
+
+# pipx
+path=($path $HOME/.local/bin)

@@ -1,0 +1,26 @@
+[user]
+	name = Jack Smith
+	email = jack@jackdeansmith.com
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = nvim
+	autocrlf = false
+	safecrlf = true
+
+[alias]
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	undo = reset --soft HEAD^
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+
+[init]
+	defaultBranch = main

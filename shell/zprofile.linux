@@ -1,0 +1,6 @@
+#
+# Linux-specific login environment
+#
+
+# Common Linux paths
+path=($path $HOME/.local/bin)
