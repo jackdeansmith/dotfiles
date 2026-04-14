@@ -40,3 +40,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
 elif [[ "$OSTYPE" == linux* ]]; then
   [[ -s "${ZDOTDIR:-$HOME}/.zprofile.linux" ]] && source "${ZDOTDIR:-$HOME}/.zprofile.linux"
 fi
+
+export PATH="$HOME/.elan/bin:$PATH"
+
+# Added by Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"

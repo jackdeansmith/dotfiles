@@ -62,6 +62,16 @@ setopt noauto_cd
 # r shell builtin gets in the way of running the r language interpreter
 disable r
 
+# History
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTFILE=~/.zsh_history
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+
 # --- Tool integrations ---
 
 # fzf
