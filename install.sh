@@ -55,6 +55,18 @@ echo ""
 echo "Neovim config:"
 backup_and_link "$DOTFILES/nvim/init.vim" "$HOME/.config/nvim/init.vim"
 
+# vim-plug + plugins
+PLUG_VIM="$HOME/.local/share/nvim/site/autoload/plug.vim"
+if [[ ! -f "$PLUG_VIM" ]]; then
+  echo "  installing vim-plug…"
+  curl -fsSLo "$PLUG_VIM" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+if command -v nvim >/dev/null 2>&1; then
+  echo "  running :PlugInstall…"
+  nvim --headless +PlugInstall +qall 2>/dev/null || true
+fi
+
 # GitHub CLI
 echo ""
 echo "GitHub CLI config:"
