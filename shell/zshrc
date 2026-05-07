@@ -1,33 +1,19 @@
-# --- Sorin-Style Prompt (no Prezto) ---
-
-# Load colors and set VI mode keybindings
+# --- Prompt ---
 autoload -U colors && colors
 bindkey -v
 
-# Keymap-change handler for vi mode prompt indicator
-function zle-keymap-select () {
+function zle-keymap-select zle-line-init {
   case $KEYMAP in
-    viins|main)
-      prompt_chevrons="%B%F{red}❯%F{yellow}❯%F{green}❯%f%b"
-      ;;
-    vicmd)
-      prompt_chevrons="%B%F{green}❮%F{yellow}❮%F{red}❮%f%b"
-      ;;
-    *)
-      prompt_chevrons="%B%F{blue}❯%f%b"
-      ;;
+    vicmd)         vi_mode="%K{red}%F{white}%B N %b%f%k" ;;
+    main|viins|*)  vi_mode="%K{green}%F{white}%B I %b%f%k" ;;
   esac
   zle reset-prompt
 }
 zle -N zle-keymap-select
-
-function zle-line-init () {
-  zle-keymap-select
-}
 zle -N zle-line-init
 
 setopt PROMPT_SUBST
-PROMPT='${SSH_TTY:+"%F{cyan}%n%f@%F{yellow}%m%f "}%F{blue}%~%f%(!.%F{red}# %f.) $prompt_chevrons '
+PROMPT='%F{cyan}%n%f@%F{yellow}%m%f %F{blue}%~%f ${vi_mode} %# '
 
 # --- Editor ---
 export EDITOR=nvim
