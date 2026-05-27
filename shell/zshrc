@@ -67,6 +67,3 @@ setopt INC_APPEND_HISTORY
 if [[ "$OSTYPE" == darwin* ]]; then
   test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
 fi
-
-# Cargo
-export PATH="$PATH:$HOME/.cargo/bin"
