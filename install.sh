@@ -19,12 +19,18 @@ backup_and_link() {
       echo "  ok: $dest → $src (already linked)"
       return
     fi
-    if [[ "$BACKED_UP" == false ]]; then
-      mkdir -p "$BACKUP_DIR"
-      BACKED_UP=true
+    # If the existing file is byte-identical to the source, just replace it
+    # with a symlink — no backup needed
+    if [[ -f "$dest" && ! -L "$dest" ]] && cmp -s "$dest" "$src"; then
+      rm "$dest"
+    else
+      if [[ "$BACKED_UP" == false ]]; then
+        mkdir -p "$BACKUP_DIR"
+        BACKED_UP=true
+      fi
+      mv "$dest" "$BACKUP_DIR/"
+      echo "  backed up: $dest → $BACKUP_DIR/"
     fi
-    mv "$dest" "$BACKUP_DIR/"
-    echo "  backed up: $dest → $BACKUP_DIR/"
   fi
 
   ln -s "$src" "$dest"
