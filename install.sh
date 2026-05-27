@@ -34,6 +34,28 @@ backup_and_link() {
 echo "==> Installing dotfiles from $DOTFILES"
 echo ""
 
+# Linux: apt-install packages listed in linux-packages.txt
+if [[ "$OSTYPE" == linux* ]] && command -v apt-get >/dev/null 2>&1; then
+  pkgs=()
+  while IFS= read -r line; do
+    line="${line%%#*}"; line="${line//[[:space:]]/}"
+    [[ -n "$line" ]] && pkgs+=("$line")
+  done < "$DOTFILES/linux-packages.txt"
+
+  missing=()
+  for p in "${pkgs[@]}"; do
+    dpkg -s "$p" >/dev/null 2>&1 || missing+=("$p")
+  done
+
+  if (( ${#missing[@]} > 0 )); then
+    echo "Linux packages (apt):"
+    echo "  installing: ${missing[*]}"
+    sudo apt-get update -qq
+    sudo apt-get install -y "${missing[@]}"
+    echo ""
+  fi
+fi
+
 # Shell
 echo "Shell configs:"
 backup_and_link "$DOTFILES/shell/zshrc"    "$HOME/.zshrc"

@@ -1,0 +1,9 @@
+# apt packages installed by install.sh on Linux.
+# One package per line. Blank lines and # comments are ignored.
+# Keep this list minimal — the Brewfile is macOS-only and intentionally
+# fatter; this is the "things the dotfiles assume exist" floor.
+
+neovim
+fzf
+git
+curl
