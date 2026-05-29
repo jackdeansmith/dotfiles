@@ -69,6 +69,10 @@ if [[ "$OSTYPE" == darwin* ]]; then
   test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
+# Fix JLCPCB center files from KiCad
+# https://jlcpcb.com/help/article/how-to-generate-the-bom-and-centroid-file-from-kicad
+alias fixPlacementFileForJLC="gsed -i '1s/Ref/Designator/;1s/PosX/Mid X/;1s/PosY/Mid Y/;1s/Rot/Rotation/;1s/Side/Layer/'"
+
 # worktreetools (wt) — added by Claude
 case ":$PATH:" in *":$HOME/.cargo/bin:"*) ;; *) export PATH="$HOME/.cargo/bin:$PATH" ;; esac
 command -v worktreetools >/dev/null 2>&1 && eval "$(worktreetools shell-init zsh)"
