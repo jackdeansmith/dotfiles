@@ -68,3 +68,7 @@ setopt INC_APPEND_HISTORY
 if [[ "$OSTYPE" == darwin* ]]; then
   test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
 fi
+
+# worktreetools (wt) — added by Claude
+case ":$PATH:" in *":$HOME/.cargo/bin:"*) ;; *) export PATH="$HOME/.cargo/bin:$PATH" ;; esac
+command -v worktreetools >/dev/null 2>&1 && eval "$(worktreetools shell-init zsh)"
