@@ -32,6 +32,7 @@ bindkey '^Xe' edit-command-line
 alias n="clear&&ls"
 alias vim=nvim
 alias ls='ls --color=auto'
+alias yolo='claude --dangerously-skip-permissions'
 
 # macOS-specific aliases
 if [[ "$OSTYPE" == darwin* ]]; then
