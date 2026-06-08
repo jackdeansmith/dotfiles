@@ -1,3 +1,6 @@
+# --- Machine-local overrides (not tracked in dotfiles) ---
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
 # --- Prompt ---
 autoload -U colors && colors
 bindkey -v
@@ -16,8 +19,20 @@ setopt PROMPT_SUBST
 PROMPT='%F{cyan}%n%f@%F{yellow}%m%f %F{blue}%~%f ${vi_mode} %# '
 
 # --- Editor ---
-export EDITOR=nvim
-export VISUAL=nvim
+# Prefer nvim, fall back to vim, then vi — so a machine without nvim still
+# gets a working editor instead of a dangling reference. The vim alias only
+# exists when nvim does, so real vim keeps working otherwise.
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR=nvim
+  export VISUAL=nvim
+  alias vim=nvim
+elif command -v vim >/dev/null 2>&1; then
+  export EDITOR=vim
+  export VISUAL=vim
+else
+  export EDITOR=vi
+  export VISUAL=vi
+fi
 
 # Vi mode
 bindkey -v
@@ -30,14 +45,19 @@ bindkey '^Xe' edit-command-line
 
 # --- Aliases ---
 alias n="clear&&ls"
-alias vim=nvim
 alias ls='ls --color=auto'
 alias yolo='claude --dangerously-skip-permissions'
 
-# macOS-specific aliases
-if [[ "$OSTYPE" == darwin* ]]; then
-  alias claudeprojects='cd ~/ObsidianVault/ClaudeProjects && claude'
+# Obsidian vault location — override per-machine by setting OBSIDIAN_VAULT
+# (e.g. in ~/.zshrc.local) before this file's defaults kick in.
+if [[ -z "$OBSIDIAN_VAULT" ]]; then
+  if [[ "$OSTYPE" == darwin* ]]; then
+    OBSIDIAN_VAULT="$HOME/ObsidianVault"
+  else
+    OBSIDIAN_VAULT="$HOME/vaults/PersonalVault"
+  fi
 fi
+alias claudeprojects='cd "$OBSIDIAN_VAULT/ClaudeProjects" && claude'
 
 # OCDump aliases
 alias journaldump="{ ocdump daily --start=2024-01-01; ocdump tagged context; }"
@@ -61,8 +81,14 @@ setopt INC_APPEND_HISTORY
 
 # --- Tool integrations ---
 
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf — prefer the binary's own shell integration (`fzf --zsh`, fzf >= 0.48),
+# which works the same whether fzf came from apt, brew, or the git installer.
+# Fall back to the ~/.fzf.zsh file the git installer writes for older fzf.
+if command -v fzf >/dev/null 2>&1 && fzf --zsh >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+elif [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+fi
 
 # iTerm2 (macOS only)
 if [[ "$OSTYPE" == darwin* ]]; then
