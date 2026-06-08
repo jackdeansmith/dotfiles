@@ -36,7 +36,7 @@ alias yolo='claude --dangerously-skip-permissions'
 
 # macOS-specific aliases
 if [[ "$OSTYPE" == darwin* ]]; then
-  alias claudeprojects='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/ObsidianVault/ClaudeProjects && claude'
+  alias claudeprojects='cd ~/ObsidianVault/ClaudeProjects && claude'
 fi
 
 # OCDump aliases
