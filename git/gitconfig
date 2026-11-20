@@ -15,6 +15,7 @@
 [alias]
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	undo = reset --soft HEAD^
+	uncommit = reset --soft HEAD^
 
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
